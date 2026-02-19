@@ -9,7 +9,7 @@ on:
     #- cron: '00 18 * * *'
 
 jobs:
-  download:
+  upload-media:
 
     runs-on: ubuntu-latest
 

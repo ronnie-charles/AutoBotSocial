@@ -37,8 +37,8 @@ def downloadLatestVideo(redditInstance, subredditChosen):
 
     for post in currentSubreddit.hot(limit=REDDIT_SEARCH_LIMIT):
         
-        # 30 second delay to deter bot detection
-        time.sleep(30)
+        # 5 second delay to deter bot detection
+        time.sleep(5)
 
         if post.is_video and post.media:
             hasAudio = post.media['reddit_video']['has_audio']
@@ -51,7 +51,7 @@ def downloadLatestVideo(redditInstance, subredditChosen):
                 postURL = "https://www.reddit.com" + post.permalink
                 filterPostTitle = ''.join(i for i in post.title if i.isalnum() or i == " ")
                 try:
-                    time.sleep(30)
+                    time.sleep(5)
 
                     ydl_opts = {
                         "format": "bv*+ba/b",
