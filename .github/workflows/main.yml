@@ -31,7 +31,7 @@ jobs:
       - name: Setup cookies file from secret
         shell: bash
         run: |
-          echo "${{ secrets.REDDIT_COOKIES }}"" | base64 --decode > reddit_cookies.txt
+          echo "${{ secrets.REDDIT_COOKIES }}" | base64 --decode > reddit_cookies.txt
           chmod 600 reddit_cookies.txt
 
       - name: Run download.py
