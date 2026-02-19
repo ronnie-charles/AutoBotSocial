@@ -27,11 +27,12 @@ jobs:
 
       - name: Setup yt-dlp
         uses: AnimMouse/setup-yt-dlp@v3
-
-      - name: Setup yt-dlp cookies
-        uses: AnimMouse/setup-yt-dlp/cookies@v3
-        with:
-          cookies: ${{ secrets.REDDIT_COOKIES }}
+      
+      - name: Setup cookies file from secret
+        shell: bash
+        run: |
+          echo "${{ secrets.REDDIT_COOKIES }}" | base64 --decode > reddit_cookies.txt
+          chmod 600 reddit_cookies.txt
 
       - name: Run download.py
         run: python download.py

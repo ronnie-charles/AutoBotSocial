@@ -17,6 +17,8 @@ REDDIT_CLIENT_ID = os.getenv("REDDIT_CLIENT_ID")
 REDDIT_CLIENT_SECRET = os.getenv("REDDIT_CLIENT_SECRET")
 REDDIT_USER_AGENT = os.getenv("REDDIT_USER_AGENT")
 
+REDDIT_COOKIES_FILE = "reddit_cookies.txt"
+
 stream = open("configuration.yaml", 'r')
 config = yaml.load(stream, Loader=Loader)
 
@@ -54,6 +56,7 @@ def downloadLatestVideo(redditInstance, subredditChosen):
                     time.sleep(5)
 
                     ydl_opts = {
+                        "cookiefile": REDDIT_COOKIES_FILE,
                         "format": "bv*+ba/b",
                         "merge_output_format": "mp4",
                         "outtmpl": DOWNLOAD_DIR + filterPostTitle + ".%(ext)s"
