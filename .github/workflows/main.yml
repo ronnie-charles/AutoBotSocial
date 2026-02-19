@@ -1,0 +1,54 @@
+
+name: Automated Publishing Pipeline
+
+on:
+  workflow_dispatch:
+
+  #schedule:
+    # Runs every day at 1:00pm EST (6:00pm UTC)
+    #- cron: '00 18 * * *'
+
+jobs:
+  download:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Pull our repo and checkout repo's default branch in the runner's workspace
+
+      - name: Setup Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11.6'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run download.py
+        run: python download.py
+        env:
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
+          SUBREDDIT_CHOICE_1: ${{ secrets.SUBREDDIT_CHOICE_1 }}
+          SUBREDDIT_CHOICE_2: ${{ secrets.SUBREDDIT_CHOICE_2 }}
+          SUBREDDIT_CHOICE_3: ${{ secrets.SUBREDDIT_CHOICE_3 }}
+          SUBREDDIT_CHOICE_4: ${{ secrets.SUBREDDIT_CHOICE_4 }}
+          SUBREDDIT_CHOICE_5: ${{ secrets.SUBREDDIT_CHOICE_5 }}
+          SUBREDDIT_CHOICE_6: ${{ secrets.SUBREDDIT_CHOICE_6 }}
+          SUBREDDIT_CHOICE_7: ${{ secrets.SUBREDDIT_CHOICE_7 }}
+          SUBREDDIT_CHOICE_8: ${{ secrets.SUBREDDIT_CHOICE_8 }}
+          SUBREDDIT_CHOICE_9: ${{ secrets.SUBREDDIT_CHOICE_9 }}
+          SUBREDDIT_CHOICE_10: ${{ secrets.SUBREDDIT_CHOICE_10 }}
+      
+      - name: Run upload.py
+        run: python upload.py
+        env:
+          INSTA_USER_ID: ${{ secrets.INSTA_USER_ID }}
+          INSTA_HASHTAGS: ${{ secrets.INSTA_HASHTAGS }}
+          META_APP_ID: ${{ secrets.META_APP_ID }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          META_USER_ID: ${{ secrets.META_USER_ID }}
+          META_PAGE_NAME: ${{ secrets.META_PAGE_NAME }}
+          META_SU_ACCESS_TOKEN: ${{ secrets.META_SU_ACCESS_TOKEN }}

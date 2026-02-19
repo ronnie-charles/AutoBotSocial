@@ -1,0 +1,12 @@
+---
+reddit:
+  search_limit: 100
+  num_subreddit_choices: 10
+  
+video:
+  max_duration: 60
+  output_file_name: output_video_path.txt
+
+instagram:
+  api_version: v24.0
+...

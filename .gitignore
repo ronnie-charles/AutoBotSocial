@@ -1,5 +1,18 @@
-# ignore ALL .yaml files
-*.yaml
-
 # ignore ALL .exe files
 *.exe
+
+# ignore ALL .txt files except requirements.txt
+*.txt
+!requirements.txt
+
+# ignore venv
+.venv
+
+# ignore downloads
+downloads
+
+# ignore ALL .old files
+*.old
+
+# ignore .env file
+.env
