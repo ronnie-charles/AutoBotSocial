@@ -2,6 +2,7 @@
 name: Automated Publishing Pipeline
 
 on:
+  workflow_dispatch:
   schedule:
     # Runs at 4:00pm and 8:00pm EST Monday through Friday
     - cron: '00 21 * * 1-5'

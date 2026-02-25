@@ -16,3 +16,6 @@ downloads
 
 # ignore .env file
 .env
+
+# ignore cookies file
+cookies.py
